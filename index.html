@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="utf-8">
+	<title>コラボフェス計算機2</title>
+	<!-- Add this to <head> -->
+
+	<!-- Load required Bootstrap and BootstrapVue CSS -->
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/	dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+	<!-- Load polyfills to support older browsers -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+
+	<!-- Load Vue followed by BootstrapVue -->
+	<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+	<!-- Load the following for BootstrapVueIcons support -->
+	<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+</head>
+<body>
+
+	<div id="app">
+		<!-- <pre>{{$data}}</pre> -->
+		<b-navbar type="dark" variant="danger" sticky="true">
+    		<b-navbar-brand>ダメージ：{{totalDamage}}</b-navbar-brand>
+  		</b-navbar>
+
+		<b-container class="inputs">
+		
+		<br>
+		<b-row >
+			<b-col cols="11">
+    			<label for="stageLevel">ステージLv：{{stageLevel}}</label>
+    			<b-form-input id="stageLevel" v-model="stageLevel" type="range" min="1" max="30"></b-form-input>
+  			</b-col>
+  		</b-row>
+  		<br>
+  		<b-row>
+  			<b-col>
+  				<b-form-group label="ステージ">
+      				<b-form-radio v-model="isCenter" name="some-radios" value=1>VoDaVi</b-form-radio>
+      				<b-form-radio v-model="isCenter" name="some-radios" value=0.7>Ce</b-form-radio>
+    			</b-form-group>
+  			</b-col>
+  			<b-col>
+  				<label for="strengthCount">打たれ強い</label>
+    			<b-form-spinbutton id="strengthCount" v-model="strengthCount" min="0" max="5" vertical></b-form-spinbutton>
+  			</b-col>
+  			<b-col>
+  				<label for="turnCount">ターン数</label>
+    			<b-form-spinbutton id="turnCount" v-model="turnCount" min="1" max="20" vertical></b-form-spinbutton>
+  			</b-col>
+  		</b-row>
+		<br>
+  		<b-row>
+  			<b-col cols="11">
+    			<label for="watage">影響力DOWN：{{watage}}％</label>
+    			<b-form-input id="watage" v-model="watage" type="range" min="0" max="100" step="10"></b-form-input>
+  			</b-col>
+  		</b-row>
+
+  		<p>ダメージCUT</p>
+  		<b-row>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[0]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[1]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[2]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  		</b-row>
+  		<br>
+  		<b-row>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[3]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[4]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageCuts[5]" :options="cutOptions"></b-form-select>
+  			</b-col>
+  		</b-row>
+  		<br>
+  		<p>ダメージUP</p>
+  		<b-row>
+  			<b-col cols="4">
+  				<b-form-select v-model="damageUp" :options="upOptions"></b-form-select>
+  			</b-col>
+		</b-row>
+	  	</b-container>
+		<br>
+		<br>
+		<br>
+		<div align="center">
+			<p>コラボフェス被ダメ計算機 v2</p>
+			<b-link href="https://twitter.com/lookup_ue">@lookup_ue</b-link>
+		</div>
+		<br>
+		<br>
+		<br>
+
+
+
+	</div>
+	<script src="cfcalc-vue.js"></script>
+</body>
+</html>
